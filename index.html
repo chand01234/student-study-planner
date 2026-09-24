@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Study Planner</title>
+</head>
+
+<body>
+    <h1>Student Study Planner</h1>
+
+    <p>Plan your studies and keep track of your tasks.</p>
+
+    <input type="text" id="taskInput" placeholder="Enter your study task">
+
+    <button onclick="addTask()">Add Task</button>
+
+    <h2>My Tasks</h2>
+
+    <ul id="taskList"></ul>
+
+    <script>
+        function addTask() {
+            let task = document.getElementById("taskInput").value;
+
+            if (task === "") {
+                alert("Please enter a task");
+                return;
+            }
+
+            let li = document.createElement("li");
+            li.innerHTML = task + " <button onclick='this.parentElement.remove()'>Delete</button>";
+
+            document.getElementById("taskList").appendChild(li);
+
+            document.getElementById("taskInput").value = "";
+        }
+    </script>
+</body>
+</html>
