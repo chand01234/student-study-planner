@@ -21,21 +21,29 @@ href="style.css">
     <ul id="taskList"></ul>
 
     <script>
-        function addTask() {
-            let task = document.getElementById("taskInput").value;
+    function addTask() {
+        let task = document.getElementById("taskInput").value;
+        let date = document.getElementById("dateInput").value;
 
-            if (task === "") {
-                alert("Please enter a task");
-                return;
-            }
-
-            let li = document.createElement("li");
-            li.innerHTML = task + " <button onclick='this.parentElement.remove()'>Delete</button>";
-
-            document.getElementById("taskList").appendChild(li);
-
-            document.getElementById("taskInput").value = "";
+        if (task === "") {
+            alert("Please enter a task");
+            return;
         }
-    </script>
-</body>
-</html>
+
+        if (date === "") {
+            alert("Please select a due date");
+            return;
+        }
+
+        let li = document.createElement("li");
+
+        li.innerHTML =
+            task + " - Due: " + date +
+            " <button onclick='this.parentElement.remove()'>Delete</button>";
+
+        document.getElementById("taskList").appendChild(li);
+
+        document.getElementById("taskInput").value = "";
+        document.getElementById("dateInput").value = "";
+    }
+</script>
