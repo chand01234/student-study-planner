@@ -38,12 +38,20 @@ href="style.css">
         let li = document.createElement("li");
 
         li.innerHTML =
-            task + " - Due: " + date +
+            "<span>" + task + " - Due: " + date + "</span>" +
+            " <button onclick='completeTask(this)'>Completed</button>" +
             " <button onclick='this.parentElement.remove()'>Delete</button>";
 
         document.getElementById("taskList").appendChild(li);
 
         document.getElementById("taskInput").value = "";
         document.getElementById("dateInput").value = "";
+    }
+
+    function completeTask(button) {
+        let task = button.parentElement.querySelector("span");
+        task.style.textDecoration = "line-through";
+        button.innerText = "Completed ✓";
+        button.disabled = true;
     }
 </script>
